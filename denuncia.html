@@ -24,7 +24,7 @@
     <main>
         <div class="container">
             <h1>Denúncia contra Desperdício de Água</h1>
-            <form id="formDenuncia" action="https://proagua.site:3001/enviar_denuncia" method="POST" enctype="multipart/form-data">
+            <form id="formDenuncia" action="http://localhost:3001/enviar_denuncia" method="POST" enctype="multipart/form-data">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" placeholder="Coloque seu email" required>
                 
@@ -55,7 +55,7 @@
 
             const formData = new FormData(form);
 
-            fetch('https://proagua.site:3001/enviar_denuncia', {
+            fetch('http://localhost:3001/enviar_denuncia', {
                 method: 'POST',
                 body: formData
             })
