@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Outfit:wght@100..900&family=Krona+One&family=Mulish:wght@200..1000&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #f6f6f6;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cabecalho {
+    padding: 2% 10%; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    gap: 40px;
+    flex-wrap: wrap; 
+}
+
+.cabecalho_titulo {
+    font-size: 2rem;
+    font-family: "Mulish", sans-serif;
+    color: #22d4fd;
+    transition: color 0.3s ease; 
+}
+
+.links_menu {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap; 
+}
+
+.cabecalho_link {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #22d4fd;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+.cabecalho_link:hover,
+.cabecalho_link:focus {
+    color: #ffffff; 
+    transform: scale(1.1); 
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    gap: 20px;
+    padding: 0 10%; 
+}
+
+.titulo-texto {
+    margin-left: 1rem;
+    font-family: "Krona One", sans-serif;
+    color: #22d4fd;
+    font-size: 1.75rem;
+}
+
+.texto-do-artigo {
+    font-size: 1rem;
+    font-family: "Outfit", sans-serif;
+    margin: 0 1rem;
+    line-height: 1.6;
+}
+
+.imagem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagem-texto {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 1px;
+}
+
+.lista-topicos {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    gap: 10px;
+}
+
+.subtitulo-topicos {
+    font-size: 1.25rem;
+}
+
+.topicos {
+    font-size: 1rem;
+}
+
+.link {
+    color: #22d4fd;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #ffffff;
+}
+
+.container-chat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.caixa-comentarios {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 2px solid #22d4fd;
+    border-radius: 5px;
+    background-color: #121212;
+    color: #f6f6f6;
+    font-family: "Outfit", sans-serif;
+    font-size: 1rem;
+}
+
+.botao-enviar {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #22d4fd;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.botao-enviar:hover {
+    background-color: #1ab0e3;
+}
+.comentarios {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    max-width: 100%;
+}
+
+.comentario-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+.comentario-usuario p {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comentario-conteudo p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .comentario-item {
+        padding: 10px;
+    }
+
+    .comentario-conteudo p {
+        font-size: 0.9rem;
+    }
+}
+@media (max-width: 768px) {
+    .cabecalho {
+        padding: 4% 5%; 
+        flex-direction: column; 
+        align-items: flex-start; 
+    }
+
+    .cabecalho_titulo {
+        font-size: 1.5rem; 
+    }
+
+    .links_menu {
+        gap: 20px; 
+    }
+
+    main {
+        padding: 0 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .cabecalho_titulo {
+        font-size: 1.25rem; 
+    }
+
+    .links_menu {
+        flex-direction: column; 
+        gap: 10px; 
+    }
+
+    .titulo-texto {
+        font-size: 1.5rem;
+    }
+
+    .texto-do-artigo {
+        margin: 0 1rem;
+        font-size: 0.9rem;
+    }
+
+    .imagem-texto {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .caixa-comentarios {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.cabecalho{
+    padding: 0% 0% 0% 8%;
+    margin: -50px 0px 30px 0px;
+}
+.cabecalho_menu{
+    display: flex;
+    gap: 60px;
+   
+}
+.cabecalho_link{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #22d4fd;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease; 
+}
+.cabecalho_link:hover,
+.cabecalho_link:focus {
+    color: #ffffff; 
+    transform: scale(1.05); 
+}
+
+body {
+    margin: 5% 10%;
+    background-color: #000000;
+    color: #F6F6F6;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 645px; 
+    gap: 20px;
+}
+
+.Titulo-introducao {
+    font-size: 2rem; 
+    font-family: "Montserrat", sans-serif;
+}
+
+.texto-paragrafo {
+    font-size: 1.25rem;
+    font-family: "Outfit", sans-serif;
+    margin-right: 20px;
+}
+
+strong {
+    color: darkturquoise;
+}
+
+.imagem-rio {
+    width: 100%;
+    max-width: 400px; 
+    margin: 0px 0px 10% 5%;
+}
+
+.container-botao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.sub-titulo-link {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.botoes {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    justify-content: center;
+    font-family: "Krona One", sans-serif;
+    color: #F6F6F6;
+    text-align: center;
+    width: 100%;
+    max-width: 350px; 
+    border: 2px solid #22d4fd;
+    border-radius: 8px;
+    padding: 21.5px 0;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.botoes:hover {
+    background-color: #272727;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        margin: 5%;
+    }
+
+    .Titulo-introducao {
+        font-size: 1.75rem;
+    }
+
+    .texto-paragrafo {
+        font-size: 1.125rem;
+        margin-right: 10px;
+    }
+
+    .sub-titulo-link {
+        font-size: 1.25rem;
+    }
+
+    .botoes {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .Titulo-introducao {
+        font-size: 1.5rem;
+    }
+
+    .texto-paragrafo {
+        font-size: 1rem;
+    }
+
+    .botoes {
+        padding: 15px 0;
+    }
+}
