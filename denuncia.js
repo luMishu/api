@@ -10,7 +10,7 @@ const app = express();
 
 // Configuração do MySQL
 const db = mysql.createConnection({
-  host: '145.223.93.101',
+  host: '127.0.0.1', // Usando o IP local
   user: 'root',
   password: 'michiura12',
   database: 'proagua',
