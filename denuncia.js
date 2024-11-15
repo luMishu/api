@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mysql = require('mysql2');
 const multer = require('multer');
-const fs = require('fs'); // Para excluir o arquivo após enviar o e-mail
+const fs = require('fs'); // Para excluir o arquivo após enviar o e-mai
 
 const app = express();
 
