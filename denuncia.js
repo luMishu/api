@@ -10,7 +10,7 @@ const app = express();
 
 // Configuração do MySQL
 const db = mysql.createConnection({
-  host: 'localhost',
+  host: '145.223.93.101',
   user: 'root',
   password: 'michiura12',
   database: 'proagua',
