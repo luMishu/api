@@ -116,6 +116,6 @@ app.post('/enviar_denuncia', upload, (req, res) => {
 });
 
 // Iniciar o servidor
-app.listen(3001, () => {
-  console.log('Servidor rodando na porta 3001');
+app.listen(3002, () => {
+  console.log('Servidor rodando na porta 3002');
 });
