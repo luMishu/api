@@ -5,41 +5,48 @@ const bcrypt = require('bcrypt');
 const path = require('path');
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000; // Porta configurável
 
+// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname)));
 
-
-const connection = mysql.createConnection({
-    host: 'localhost',
+// Configuração do banco de dados
+const dbConfig = {
+    host: '127.0.0.1', // Melhor especificar o IP local
     user: 'root',
     password: 'michiura12',
-    database: 'proagua'
-});
+    database: 'proagua',
+};
 
+const connection = mysql.createConnection(dbConfig);
 
 connection.connect((err) => {
     if (err) {
         console.error('Erro ao conectar ao banco de dados:', err);
-        return;
+        process.exit(1); // Interrompe se não conseguir conectar
     }
     console.log('Conectado ao banco de dados como ID', connection.threadId);
 });
 
-
+// Rota de login
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ message: 'Email e senha são obrigatórios.' });
+    }
+
     const sql = 'SELECT * FROM usuarios WHERE email = ?';
     connection.query(sql, [email], async (err, results) => {
         if (err) {
             console.error('Erro ao buscar usuário:', err);
-            return res.status(500).json({ message: 'Erro ao buscar usuário.' });
+            return res.status(500).json({ message: 'Erro interno do servidor.' });
         }
 
         if (results.length === 0) {
-            return res.status(401).json({ message: 'Usuário não encontrado.' });
+            return res.status(404).json({ message: 'Usuário não encontrado.' });
         }
 
         const user = results[0];
@@ -48,30 +55,39 @@ app.post('/login', (req, res) => {
             return res.status(401).json({ message: 'Senha incorreta.' });
         }
 
-        res.json({ message: 'Login bem-sucedido!' });
+        res.json({ message: 'Login bem-sucedido!', user: { nome: user.nome, email: user.email } });
     });
 });
 
-
+// Rota de cadastro
 app.post('/cadastro', async (req, res) => {
     const { nome, sobrenome, email, senha, confirmarSenha, genero, bairro } = req.body;
 
-    if (senha !== confirmarSenha) {
-        return res.status(400).send('As senhas não correspondem!');
+    if (!nome || !sobrenome || !email || !senha || !confirmarSenha || !genero || !bairro) {
+        return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
     }
 
-    const hashedSenha = await bcrypt.hash(senha, 10);
-    const sql = 'INSERT INTO usuarios (nome, sobrenome, email, senha, genero, bairro) VALUES (?, ?, ?, ?, ?, ?)';
-    connection.query(sql, [nome, sobrenome, email, hashedSenha, genero, bairro], (err, result) => {
-        if (err) {
-            console.error('Erro ao cadastrar usuário:', err);
-            return res.status(500).send('Erro ao cadastrar usuário. Tente novamente.');
-        }
-        res.send('Cadastro realizado com sucesso!');
-    });
+    if (senha !== confirmarSenha) {
+        return res.status(400).json({ message: 'As senhas não correspondem!' });
+    }
+
+    try {
+        const hashedSenha = await bcrypt.hash(senha, 10);
+        const sql = 'INSERT INTO usuarios (nome, sobrenome, email, senha, genero, bairro) VALUES (?, ?, ?, ?, ?, ?)';
+        connection.query(sql, [nome, sobrenome, email, hashedSenha, genero, bairro], (err, result) => {
+            if (err) {
+                console.error('Erro ao cadastrar usuário:', err);
+                return res.status(500).json({ message: 'Erro ao cadastrar usuário. Tente novamente.' });
+            }
+            res.status(201).json({ message: 'Cadastro realizado com sucesso!' });
+        });
+    } catch (error) {
+        console.error('Erro ao processar cadastro:', error);
+        res.status(500).json({ message: 'Erro interno do servidor.' });
+    }
 });
 
-
-app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
+// Inicialização do servidor
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
