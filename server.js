@@ -7,6 +7,8 @@ const db = mysql.createConnection({
   database: 'proagua',
 });
 
+console.log('Iniciando conexão...');
+
 db.connect(err => {
   if (err) {
     console.error('Erro ao conectar ao MySQL:', err);
