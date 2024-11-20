@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname)));
 const dbConfig = {
     host: '127.0.0.1', // Melhor especificar o IP local
     user: 'root',
-    password: 'Michiura12',
+    password: 'Michiura12@',
     database: 'proagua',
 };
 
