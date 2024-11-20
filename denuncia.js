@@ -12,7 +12,7 @@ const app = express();
 const db = mysql.createConnection({
   host: '127.0.0.1', // Usando o IP local
   user: 'root',
-  password: 'michiura12',
+  password: 'Michiura12@',
   database: 'proagua',
 });
 
